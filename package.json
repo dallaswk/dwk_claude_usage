@@ -1,0 +1,48 @@
+{
+  "name": "dwk-claude-usage",
+  "displayName": "Claude Usage",
+  "description": "Muestra en la barra de estado el uso del plan de Claude (sesión de 5 h y semanal).",
+  "version": "0.1.3",
+  "publisher": "dallaswk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dallaswk/dwk_claude_usage"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "extensionKind": ["ui"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeUsage.refresh",
+        "title": "Claude Usage: Actualizar"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Usage",
+      "properties": {
+        "claudeUsage.intervaloMinutos": {
+          "type": "number",
+          "default": 2,
+          "minimum": 1,
+          "description": "Cada cuántos minutos se consulta el uso."
+        },
+        "claudeUsage.avisoPorcentaje": {
+          "type": "number",
+          "default": 80,
+          "description": "A partir de este porcentaje el indicador se pinta de aviso."
+        },
+        "claudeUsage.credencialesPath": {
+          "type": "string",
+          "default": "",
+          "description": "Ruta a .credentials.json de Claude Code. Vacío = ~/.claude/.credentials.json"
+        }
+      }
+    }
+  }
+}
